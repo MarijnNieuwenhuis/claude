@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:support.claude.com)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(git --version)",
+      "Bash(composer --version)",
+      "Bash(git pull)",
+      "Bash(test -f composer.json)",
+      "Bash(composer install)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

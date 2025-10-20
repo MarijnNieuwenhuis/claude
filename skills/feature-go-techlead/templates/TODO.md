@@ -1,0 +1,782 @@
+# Feature: {Feature Name} - Implementation Plan
+
+**Status**: Not Started
+**Created**: {Date}
+**Last Updated**: {Date}
+**Go Version**: {1.21+ or specific version}
+**Feature Doc**: [FEATURE.md](./FEATURE.md)
+**Estimated Total Effort**: {X hours/days}
+
+## Overview
+
+{1-2 paragraph summary of what will be built, why it's needed, and the high-level approach}
+
+### Key Objectives
+
+1. {Objective 1}
+2. {Objective 2}
+3. {Objective 3}
+
+### Success Criteria
+
+- [ ] {Criterion 1}
+- [ ] {Criterion 2}
+- [ ] {Criterion 3}
+
+---
+
+## Implementation Phases
+
+### Phase 1: Foundation ({N} tasks, ~{X} hours)
+
+Setup project structure, define types, and create interfaces.
+
+- [ ] Task 1.1: {Task name}
+- [ ] Task 1.2: {Task name}
+- [ ] Task 1.3: {Task name}
+
+### Phase 2: Core Implementation ({N} tasks, ~{X} hours)
+
+Implement core business logic and functionality.
+
+- [ ] Task 2.1: {Task name}
+- [ ] Task 2.2: {Task name}
+- [ ] Task 2.3: {Task name}
+
+### Phase 3: Testing & Validation ({N} tasks, ~{X} hours)
+
+Comprehensive testing strategy including unit, integration, and benchmarks.
+
+- [ ] Task 3.1: {Task name}
+- [ ] Task 3.2: {Task name}
+- [ ] Task 3.3: {Task name}
+
+### Phase 4: Documentation & Deployment ({N} tasks, ~{X} hours)
+
+Documentation, examples, and deployment preparation.
+
+- [ ] Task 4.1: {Task name}
+- [ ] Task 4.2: {Task name}
+- [ ] Task 4.3: {Task name}
+
+---
+
+## Detailed Task Breakdown
+
+### Phase 1: Foundation
+
+#### Task 1.1: Initialize Go Module and Project Structure
+
+**Estimated Effort**: {X} hours
+**Dependencies**: None
+**Status**: Not Started
+
+**Description**:
+Create the Go module and set up the project directory structure following Go best practices.
+
+**Implementation Steps**:
+1. Run `go mod init {module-path}`
+2. Create directory structure:
+   ```
+   {project-name}/
+   ├── cmd/
+   │   └── {app-name}/
+   │       └── main.go
+   ├── pkg/
+   │   └── {package}/
+   ├── internal/
+   │   └── {package}/
+   ├── go.mod
+   ├── go.sum
+   ├── README.md
+   └── Makefile
+   ```
+3. Create initial README.md with project overview
+
+**Acceptance Criteria**:
+- [ ] Go module initialized
+- [ ] Directory structure created
+- [ ] README.md exists with basic info
+- [ ] Makefile with common targets (build, test, run)
+
+**Files to Create**:
+- `go.mod`
+- `README.md`
+- `Makefile`
+- `cmd/{app-name}/main.go`
+
+**Go Best Practices**:
+- Reference: `.claude/go/best-practices.md` - Code Organization
+- Use `cmd/` for applications
+- Use `internal/` for private code
+- Use `pkg/` for public libraries
+
+---
+
+#### Task 1.2: Define Core Types and Interfaces
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Task 1.1
+**Status**: Not Started
+
+**Description**:
+Define the core data types, interfaces, and constants that will be used throughout the application.
+
+**Implementation Steps**:
+1. Create `pkg/{package}/types.go`
+2. Define main data structures
+3. Create `pkg/{package}/interfaces.go`
+4. Define key interfaces
+5. Create `pkg/{package}/errors.go`
+6. Define custom error types and sentinel errors
+
+**Acceptance Criteria**:
+- [ ] Core types defined with proper documentation
+- [ ] Interfaces defined following single-responsibility principle
+- [ ] Custom error types created
+- [ ] Sentinel errors defined as package-level variables
+- [ ] All types have godoc comments
+
+**Files to Create**:
+- `pkg/{package}/types.go`
+- `pkg/{package}/interfaces.go`
+- `pkg/{package}/errors.go`
+
+**Go Best Practices**:
+- Reference: `.claude/go/idiomatic-go.md` - Interfaces for Behavior
+- Reference: `.claude/go/error-handling.md` - Custom Errors
+- Keep interfaces small (single method if possible)
+- Use value types for small structs, pointers for large ones
+- Define errors at package level
+
+**Example**:
+```go
+// types.go
+type Config struct {
+    Host    string
+    Port    int
+    Timeout time.Duration
+}
+
+// interfaces.go
+type Service interface {
+    Process(ctx context.Context, data Data) (Result, error)
+}
+
+// errors.go
+var (
+    ErrNotFound   = errors.New("not found")
+    ErrInvalidInput = errors.New("invalid input")
+)
+
+type ValidationError struct {
+    Field  string
+    Reason string
+}
+
+func (e *ValidationError) Error() string {
+    return fmt.Sprintf("validation failed: %s: %s", e.Field, e.Reason)
+}
+```
+
+---
+
+### Phase 2: Core Implementation
+
+#### Task 2.1: Implement {Core Component}
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Task 1.2
+**Status**: Not Started
+
+**Description**:
+{Detailed description of what this component does}
+
+**Implementation Steps**:
+1. {Step 1}
+2. {Step 2}
+3. {Step 3}
+
+**Acceptance Criteria**:
+- [ ] {Criterion 1}
+- [ ] {Criterion 2}
+- [ ] Error handling implemented
+- [ ] Logging added at appropriate levels
+
+**Files to Create/Modify**:
+- `pkg/{package}/{file}.go`
+- `pkg/{package}/{file}_test.go`
+
+**Go Best Practices**:
+- Reference: `.claude/go/{relevant-doc}.md`
+- {Specific practice}
+
+---
+
+#### Task 2.2: Implement {Another Component}
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Task 2.1
+**Status**: Not Started
+
+**Description**:
+{Description}
+
+**Implementation Steps**:
+1. {Step 1}
+2. {Step 2}
+
+**Acceptance Criteria**:
+- [ ] {Criterion 1}
+- [ ] {Criterion 2}
+
+**Files to Create/Modify**:
+- `{file path}`
+
+**Go Best Practices**:
+- Reference: `.claude/go/{relevant-doc}.md`
+
+---
+
+### Phase 3: Testing & Validation
+
+#### Task 3.1: Write Unit Tests
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Phase 2 tasks
+**Status**: Not Started
+
+**Description**:
+Write comprehensive unit tests for all packages using table-driven test approach.
+
+**Implementation Steps**:
+1. Create test files for each source file
+2. Write table-driven tests for each public function
+3. Test error cases and edge cases
+4. Achieve >80% code coverage
+
+**Acceptance Criteria**:
+- [ ] All public functions have tests
+- [ ] Table-driven tests used where appropriate
+- [ ] Error cases tested
+- [ ] Edge cases covered
+- [ ] Code coverage >80%
+- [ ] Tests pass with `go test ./...`
+
+**Files to Create**:
+- `pkg/{package}/{file}_test.go` (for each source file)
+
+**Go Best Practices**:
+- Reference: `.claude/go/testing-practices.md`
+- Use table-driven tests for multiple cases
+- Use `t.Helper()` in test helpers
+- Run tests in parallel with `t.Parallel()` where safe
+- Use subtests with `t.Run()`
+
+**Example**:
+```go
+func TestService_Process(t *testing.T) {
+    tests := []struct {
+        name    string
+        input   Data
+        want    Result
+        wantErr bool
+    }{
+        {
+            name:    "valid input",
+            input:   Data{Value: "test"},
+            want:    Result{Status: "ok"},
+            wantErr: false,
+        },
+        {
+            name:    "invalid input",
+            input:   Data{Value: ""},
+            want:    Result{},
+            wantErr: true,
+        },
+    }
+
+    for _, tt := range tests {
+        t.Run(tt.name, func(t *testing.T) {
+            s := NewService()
+            got, err := s.Process(context.Background(), tt.input)
+            if (err != nil) != tt.wantErr {
+                t.Errorf("Process() error = %v, wantErr %v", err, tt.wantErr)
+                return
+            }
+            if !reflect.DeepEqual(got, tt.want) {
+                t.Errorf("Process() = %v, want %v", got, tt.want)
+            }
+        })
+    }
+}
+```
+
+---
+
+#### Task 3.2: Write Integration Tests
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Task 3.1
+**Status**: Not Started
+
+**Description**:
+{Description of integration tests needed}
+
+**Implementation Steps**:
+1. Create integration test files with build tag
+2. Set up test fixtures
+3. Write integration tests
+4. Document how to run them
+
+**Acceptance Criteria**:
+- [ ] Integration tests use `// +build integration` tag
+- [ ] Test fixtures in `testdata/` directory
+- [ ] Tests can be run with `go test -tags=integration`
+- [ ] Tests skip when run with `-short` flag
+- [ ] README documents how to run integration tests
+
+**Files to Create**:
+- `{package}_integration_test.go`
+- `testdata/{fixtures}`
+
+**Go Best Practices**:
+- Reference: `.claude/go/testing-practices.md` - Integration Tests
+- Use build tags to separate from unit tests
+- Check `testing.Short()` to skip in CI
+- Clean up test resources properly
+
+---
+
+#### Task 3.3: Write Benchmarks (if applicable)
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Task 3.1
+**Status**: Not Started
+
+**Description**:
+Write benchmarks for performance-critical code paths.
+
+**Implementation Steps**:
+1. Identify performance-critical functions
+2. Write benchmarks in `*_test.go` files
+3. Run benchmarks and establish baseline
+4. Document benchmark results
+
+**Acceptance Criteria**:
+- [ ] Benchmarks written for critical paths
+- [ ] Benchmarks run with `go test -bench=.`
+- [ ] Baseline performance documented
+- [ ] Memory allocations measured with `-benchmem`
+
+**Files to Modify**:
+- `pkg/{package}/{file}_test.go`
+
+**Go Best Practices**:
+- Reference: `.claude/go/testing-practices.md` - Benchmarks
+- Use `b.ResetTimer()` to exclude setup time
+- Use `b.N` for iterations
+- Report allocations with `-benchmem`
+
+**Example**:
+```go
+func BenchmarkProcess(b *testing.B) {
+    s := NewService()
+    data := Data{Value: "test"}
+    ctx := context.Background()
+
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        _, _ = s.Process(ctx, data)
+    }
+}
+```
+
+---
+
+### Phase 4: Documentation & Deployment
+
+#### Task 4.1: Add Package Documentation
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Phase 2, Phase 3
+**Status**: Not Started
+
+**Description**:
+Add comprehensive documentation to all packages, types, and functions.
+
+**Implementation Steps**:
+1. Add package comments to each package
+2. Add godoc comments to all exported types
+3. Add godoc comments to all exported functions
+4. Add example tests for public APIs
+5. Generate and review godoc locally
+
+**Acceptance Criteria**:
+- [ ] Every package has package comment
+- [ ] Every exported type has comment
+- [ ] Every exported function has comment
+- [ ] Examples provided for key APIs
+- [ ] Godoc renders correctly
+
+**Files to Modify**:
+- All `.go` files with exports
+- Add `example_test.go` files
+
+**Go Best Practices**:
+- Reference: `.claude/go/best-practices.md` - Documentation
+- Start comments with the name being documented
+- Write complete sentences
+- Provide examples in `Example` functions
+
+**Example**:
+```go
+// Package validator provides cryptocurrency address validation.
+//
+// This package validates addresses for multiple cryptocurrencies
+// using external validation libraries.
+//
+// Example usage:
+//
+//     v := validator.New()
+//     valid, err := v.Validate("BTC", "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa")
+//     if err != nil {
+//         log.Fatal(err)
+//     }
+//     fmt.Println(valid) // true
+//
+package validator
+
+// Validator validates cryptocurrency addresses.
+type Validator struct {
+    // ...
+}
+
+// New creates a new Validator instance.
+func New() *Validator {
+    // ...
+}
+
+// Validate checks if an address is valid for the given currency.
+// It returns true if the address is valid, false otherwise.
+// An error is returned if the currency is not supported.
+func (v *Validator) Validate(currency, address string) (bool, error) {
+    // ...
+}
+```
+
+---
+
+#### Task 4.2: Update README
+
+**Estimated Effort**: {X} hours
+**Dependencies**: Task 4.1
+**Status**: Not Started
+
+**Description**:
+Create comprehensive README with installation, usage, and examples.
+
+**Implementation Steps**:
+1. Write project overview
+2. Add installation instructions
+3. Add usage examples
+4. Document CLI flags/options
+5. Add development setup instructions
+6. Add testing instructions
+
+**Acceptance Criteria**:
+- [ ] README has clear overview
+- [ ] Installation instructions provided
+- [ ] Usage examples included
+- [ ] Development setup documented
+- [ ] Testing instructions provided
+- [ ] Contributing guidelines (if applicable)
+
+**Files to Modify**:
+- `README.md`
+
+**README Structure**:
+```markdown
+# {Project Name}
+
+{Brief description}
+
+## Features
+
+- Feature 1
+- Feature 2
+
+## Installation
+
+```bash
+go install {module-path}/cmd/{app-name}@latest
+```
+
+## Usage
+
+```bash
+{app-name} [flags]
+```
+
+### Examples
+
+...
+
+## Development
+
+### Prerequisites
+
+- Go 1.21+
+
+### Building
+
+```bash
+make build
+```
+
+### Testing
+
+```bash
+make test
+```
+
+## Contributing
+
+...
+
+## License
+
+{License}
+```
+
+---
+
+#### Task 4.3: Create Makefile
+
+**Estimated Effort**: {X} hours
+**Dependencies**: None (can be done early)
+**Status**: Not Started
+
+**Description**:
+Create Makefile with common development tasks.
+
+**Implementation Steps**:
+1. Create Makefile
+2. Add build target
+3. Add test target
+4. Add lint target
+5. Add clean target
+
+**Acceptance Criteria**:
+- [ ] `make build` compiles the project
+- [ ] `make test` runs all tests
+- [ ] `make lint` runs linters
+- [ ] `make clean` removes build artifacts
+- [ ] `make help` shows available targets
+
+**Files to Create**:
+- `Makefile`
+
+**Example**:
+```makefile
+.PHONY: build test lint clean help
+
+APP_NAME := {app-name}
+BUILD_DIR := ./build
+
+build: ## Build the application
+	go build -o $(BUILD_DIR)/$(APP_NAME) ./cmd/$(APP_NAME)
+
+test: ## Run tests
+	go test -v -race -cover ./...
+
+test-integration: ## Run integration tests
+	go test -v -tags=integration ./...
+
+bench: ## Run benchmarks
+	go test -bench=. -benchmem ./...
+
+lint: ## Run linters
+	golangci-lint run
+
+fmt: ## Format code
+	gofmt -s -w .
+	go mod tidy
+
+clean: ## Clean build artifacts
+	rm -rf $(BUILD_DIR)
+
+help: ## Show this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+.DEFAULT_GOAL := help
+```
+
+---
+
+## Go Best Practices to Follow
+
+### Code Organization
+- **Reference**: `.claude/go/best-practices.md` - Code Organization
+- Use `cmd/` for main applications
+- Use `internal/` for private packages
+- Use `pkg/` for public libraries
+- One package per directory
+
+### Naming Conventions
+- **Reference**: `.claude/go/best-practices.md` - Naming Conventions
+- Short variable names in small scopes
+- Descriptive names in larger scopes
+- Interfaces end in `-er` for single methods
+- No underscores in package names
+
+### Error Handling
+- **Reference**: `.claude/go/error-handling.md`
+- Always check errors
+- Wrap errors with context using `fmt.Errorf` with `%w`
+- Define sentinel errors at package level
+- Create custom error types for rich information
+
+### Concurrency
+- **Reference**: `.claude/go/concurrency-patterns.md`
+- Use goroutines for concurrent work
+- Use channels for communication
+- Always ensure goroutines can exit
+- Use context for cancellation
+
+### Testing
+- **Reference**: `.claude/go/testing-practices.md`
+- Write table-driven tests
+- Use `t.Helper()` in test utilities
+- Run tests in parallel when safe
+- Aim for >80% coverage on critical code
+
+### Common Mistakes to Avoid
+- **Reference**: `.claude/go/common-mistakes.md`
+- Don't shadow variables with `:=`
+- Don't ignore errors
+- Don't leak goroutines
+- Don't copy mutexes
+- Close channels from sender side only
+
+### Design Patterns
+- **Reference**: `.claude/go/design-patterns.md`
+- Use functional options for configuration
+- Accept interfaces, return concrete types
+- Use context for cancellation and timeouts
+- Prefer composition over inheritance (embedding)
+
+---
+
+## Validation Checklist
+
+Before marking implementation complete, verify:
+
+### Code Quality
+- [ ] All code formatted with `gofmt`
+- [ ] No linter warnings with `golangci-lint`
+- [ ] All functions have godoc comments
+- [ ] Code follows Go idioms from `.claude/go/idiomatic-go.md`
+
+### Testing
+- [ ] Unit tests pass: `go test ./...`
+- [ ] Integration tests pass: `go test -tags=integration`
+- [ ] Code coverage >80% on critical paths
+- [ ] Benchmarks run successfully (if applicable)
+
+### Error Handling
+- [ ] All errors checked and handled
+- [ ] Errors wrapped with context
+- [ ] Custom errors for domain-specific cases
+- [ ] Error messages are descriptive
+
+### Concurrency
+- [ ] No data races: `go test -race ./...`
+- [ ] Goroutines can be cancelled
+- [ ] Channels closed properly
+- [ ] Mutexes not copied
+
+### Documentation
+- [ ] README is complete and accurate
+- [ ] Package documentation exists
+- [ ] Public APIs documented
+- [ ] Examples provided
+
+### Performance
+- [ ] No obvious performance issues
+- [ ] Benchmarks meet targets (if applicable)
+- [ ] Memory allocations reasonable
+
+### Security
+- [ ] Input validation implemented
+- [ ] No hardcoded secrets
+- [ ] Proper use of crypto/rand (if needed)
+- [ ] SQL injection prevented (if applicable)
+
+---
+
+## Dependencies
+
+### Internal Dependencies
+- {Dependency 1}: {Why needed}
+- {Dependency 2}: {Why needed}
+
+### External Dependencies
+- `{module}` {version}: {Purpose}
+- `{module}` {version}: {Purpose}
+
+To add external dependencies:
+```bash
+go get {module}@{version}
+```
+
+---
+
+## Timeline
+
+| Phase | Duration | Start Date | End Date |
+|-------|----------|------------|----------|
+| Phase 1: Foundation | {X} hours | {Date} | {Date} |
+| Phase 2: Core Implementation | {X} hours | {Date} | {Date} |
+| Phase 3: Testing & Validation | {X} hours | {Date} | {Date} |
+| Phase 4: Documentation & Deployment | {X} hours | {Date} | {Date} |
+| **Total** | **{X} hours** | **{Date}** | **{Date}** |
+
+---
+
+## Risks & Mitigations
+
+| Risk | Impact | Likelihood | Mitigation |
+|------|--------|------------|------------|
+| {Risk 1} | {High/Med/Low} | {High/Med/Low} | {Mitigation strategy} |
+| {Risk 2} | {High/Med/Low} | {High/Med/Low} | {Mitigation strategy} |
+
+---
+
+## Notes
+
+### Technical Decisions
+
+1. **{Decision 1}**: {Rationale and alternatives considered}
+2. **{Decision 2}**: {Rationale and alternatives considered}
+
+### Future Enhancements
+
+- {Enhancement 1}
+- {Enhancement 2}
+
+### References
+
+- Feature Documentation: [FEATURE.md](./FEATURE.md)
+- Go Resources: `.claude/go/`
+- {External resource 1}
+- {External resource 2}
+
+---
+
+## Change Log
+
+| Date | Author | Changes |
+|------|--------|---------|
+| {Date} | feature-go-techlead | Initial TODO.md created |
+| {Date} | {Name} | {Changes} |
