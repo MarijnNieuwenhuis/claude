@@ -8,7 +8,9 @@
       "Bash(composer --version)",
       "Bash(git pull)",
       "Bash(test -f composer.json)",
-      "Bash(composer install)"
+      "Bash(composer install)",
+      "Bash(mkdir -p .claude/skills/feature-go-developer)",
+      "Bash(mv .claude/skills/feature-go-developer/skill.md .claude/skills/feature-go-developer/SKILL.md)"
     ],
     "deny": [],
     "ask": []
