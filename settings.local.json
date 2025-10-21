@@ -30,7 +30,8 @@
       "Bash(ln:*)",
       "Bash(./test-all.sh:*)",
       "Bash(cat:*)",
-      "Skill(feature-manager)"
+      "Skill(feature-manager)",
+      "Skill(create-skill)"
     ],
     "deny": [],
     "ask": []

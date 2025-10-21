@@ -296,9 +296,13 @@ type Client struct {
    - Run go vet
    - Check acceptance criteria
 
-6. **Update TODO.md**
-   - Mark task as completed
-   - Add notes if needed
+6. **Update TODO.md** (REQUIRED - do this immediately after completing task)
+   - Use Edit tool to mark task checkboxes as `[x]` or update Status field
+   - Change task status from `[ ]` to `[x]` in acceptance criteria
+   - Add completion date: `**Completed**: YYYY-MM-DD`
+   - Add implementation summary with files modified
+   - Add notes for next tasks if applicable
+   - This is NOT optional - always update TODO.md after each completed task
 
 ### Code Structure Guidelines
 
@@ -608,38 +612,81 @@ After refactoring:
 
 ## Phase 8: Progress Tracking
 
-### Update TODO.md
+### Update TODO.md (CRITICAL - REQUIRED AFTER EACH TASK)
 
-**Mark Tasks Complete**:
+**IMPORTANT**: After completing EVERY task, you MUST use the Edit tool to update TODO.md immediately. This is not optional.
+
+**How to Update**:
+
+1. **Use Edit Tool** - Read TODO.md first, then edit it
+2. **Mark Checkboxes** - Change `[ ]` to `[x]` for completed items
+3. **Update Status Field** - Change from "Not Started" or "In Progress" to "✅ Completed"
+4. **Add Completion Date** - Add `**Completed**: YYYY-MM-DD`
+5. **Add Implementation Summary** - Brief notes about what was done
+6. **Update Acceptance Criteria** - Mark all criteria as `[x]`
+
+**Example Update**:
+
+**Before**:
+```markdown
+### Task 2.1: Implement HTTP Client
+
+**Status**: Not Started
+**Phase**: Storage Layer
+**Dependencies**: None
+
+##### Acceptance Criteria
+- [ ] Client respects context timeout
+- [ ] Retries 3 times with backoff
+- [ ] Logs all requests/responses
+```
+
+**After** (using Edit tool):
 ```markdown
 ### Task 2.1: Implement HTTP Client
 
 **Status**: ✅ Completed
-**Completed**: 2025-01-21
+**Completed**: 2025-10-21
+**Phase**: Storage Layer
+**Dependencies**: None
 
-#### Implementation Summary
+##### Implementation Summary
 - Created `pkg/http/client.go` with HTTPClient interface
 - Implemented retry logic with exponential backoff
 - Used functional options pattern for configuration
 
-#### Files Created
+##### Files Modified/Created
 - `pkg/http/client.go` (150 lines)
 - `pkg/http/options.go` (50 lines)
 
-#### Acceptance Criteria
+##### Acceptance Criteria
 - [x] Client respects context timeout
 - [x] Retries 3 times with backoff
 - [x] Logs all requests/responses
 - [x] Handles network errors gracefully
-```
 
-**Add Notes for Next Tasks**:
-```markdown
-#### Notes for Future Tasks
+##### Notes for Future Tasks
 - HTTP client is ready for use in Task 2.2
-- Consider adding metrics collection in future
 - Retry backoff uses exponential strategy (1s, 2s, 4s)
 ```
+
+**Phase-Level Checkboxes**:
+
+If TODO.md has phase-level checkboxes like:
+```markdown
+### Phase 1: Foundation (2-3 hours)
+- [ ] Task 1.1: Define types
+- [ ] Task 1.2: Update structures
+```
+
+Update them to:
+```markdown
+### Phase 1: Foundation (2-3 hours)
+- [x] Task 1.1: Define types
+- [x] Task 1.2: Update structures
+```
+
+**DO NOT SKIP THIS STEP** - Always update TODO.md after completing a task, before moving to the next one.
 
 ---
 
