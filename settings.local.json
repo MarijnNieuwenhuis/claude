@@ -29,7 +29,8 @@
       "Bash(NETWORK_MODE=mainnet symfony server:start:*)",
       "Bash(ln:*)",
       "Bash(./test-all.sh:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Skill(feature-manager)"
     ],
     "deny": [],
     "ask": []

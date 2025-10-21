@@ -42,21 +42,13 @@ Implement core business logic and functionality.
 - [ ] Task 2.2: {Task name}
 - [ ] Task 2.3: {Task name}
 
-### Phase 3: Testing & Validation
+### Phase 3: Documentation & Deployment
 
-Comprehensive testing strategy including unit, integration, and benchmarks.
+Documentation, examples, and deployment preparation.
 
 - [ ] Task 3.1: {Task name}
 - [ ] Task 3.2: {Task name}
 - [ ] Task 3.3: {Task name}
-
-### Phase 4: Documentation & Deployment
-
-Documentation, examples, and deployment preparation.
-
-- [ ] Task 4.1: {Task name}
-- [ ] Task 4.2: {Task name}
-- [ ] Task 4.3: {Task name}
 
 ---
 
@@ -201,7 +193,6 @@ func (e *ValidationError) Error() string {
 
 **Files to Create/Modify**:
 - `pkg/{package}/{file}.go`
-- `pkg/{package}/{file}_test.go`
 
 **Go Best Practices**:
 - Reference: `.claude/go/{relevant-doc}.md`
@@ -308,89 +299,11 @@ func TestService_Process(t *testing.T) {
 
 ---
 
-#### Task 3.2: Write Integration Tests
+### Phase 3: Documentation & Deployment
 
-**Dependencies**: Task 3.1
-**Status**: Not Started
+#### Task 3.1: Add Package Documentation
 
-**Description**:
-{Description of integration tests needed}
-
-**Implementation Steps**:
-1. Create integration test files with build tag
-2. Set up test fixtures
-3. Write integration tests
-4. Document how to run them
-
-**Acceptance Criteria**:
-- [ ] Integration tests use `// +build integration` tag
-- [ ] Test fixtures in `testdata/` directory
-- [ ] Tests can be run with `go test -tags=integration`
-- [ ] Tests skip when run with `-short` flag
-- [ ] README documents how to run integration tests
-
-**Files to Create**:
-- `{package}_integration_test.go`
-- `testdata/{fixtures}`
-
-**Go Best Practices**:
-- Reference: `.claude/go/testing-practices.md` - Integration Tests
-- Use build tags to separate from unit tests
-- Check `testing.Short()` to skip in CI
-- Clean up test resources properly
-
----
-
-#### Task 3.3: Write Benchmarks (if applicable)
-
-**Dependencies**: Task 3.1
-**Status**: Not Started
-
-**Description**:
-Write benchmarks for performance-critical code paths.
-
-**Implementation Steps**:
-1. Identify performance-critical functions
-2. Write benchmarks in `*_test.go` files
-3. Run benchmarks and establish baseline
-4. Document benchmark results
-
-**Acceptance Criteria**:
-- [ ] Benchmarks written for critical paths
-- [ ] Benchmarks run with `go test -bench=.`
-- [ ] Baseline performance documented
-- [ ] Memory allocations measured with `-benchmem`
-
-**Files to Modify**:
-- `pkg/{package}/{file}_test.go`
-
-**Go Best Practices**:
-- Reference: `.claude/go/testing-practices.md` - Benchmarks
-- Use `b.ResetTimer()` to exclude setup time
-- Use `b.N` for iterations
-- Report allocations with `-benchmem`
-
-**Example**:
-```go
-func BenchmarkProcess(b *testing.B) {
-    s := NewService()
-    data := Data{Value: "test"}
-    ctx := context.Background()
-
-    b.ResetTimer()
-    for i := 0; i < b.N; i++ {
-        _, _ = s.Process(ctx, data)
-    }
-}
-```
-
----
-
-### Phase 4: Documentation & Deployment
-
-#### Task 4.1: Add Package Documentation
-
-**Dependencies**: Phase 2, Phase 3
+**Dependencies**: Phase 2
 **Status**: Not Started
 
 **Description**:
@@ -458,9 +371,9 @@ func (v *Validator) Validate(currency, address string) (bool, error) {
 
 ---
 
-#### Task 4.2: Update README
+#### Task 3.2: Update README
 
-**Dependencies**: Task 4.1
+**Dependencies**: Task 3.1
 **Status**: Not Started
 
 **Description**:
@@ -541,7 +454,7 @@ make test
 
 ---
 
-#### Task 4.3: Create Makefile
+#### Task 3.3: Create Makefile
 
 **Dependencies**: None (can be done early)
 **Status**: Not Started

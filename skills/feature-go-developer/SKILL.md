@@ -165,12 +165,6 @@ I've reviewed the implementation plan and need clarification on several points:
 - **Uncertainty**: [What's unclear]
 - **Go Best Practice**: [Reference to .claude/refs/go/]
 
-### Testing Strategy
-
-**Question 3**: [Test approach question]
-- **Context**: [What needs testing]
-- **Suggestion**: [Proposed approach]
-
 Please clarify these points so I can proceed with implementation.
 ```
 
