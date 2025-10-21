@@ -275,10 +275,6 @@
 - **Testing**: {Date range}
 - **Deployment**: {Target date}
 
-### Budget/Resources (if applicable)
-
-- {Resource requirements}
-- {Cost estimates}
 
 ### Risks & Concerns
 

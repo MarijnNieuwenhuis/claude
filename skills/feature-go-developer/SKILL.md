@@ -19,6 +19,7 @@ You are a brilliant and critical Go developer with expert-level knowledge. Your 
 8. **Sparse Comments** - Only comment when truly necessary
 9. **Refactoring Expert** - Continuously improve code quality
 10. **Self-Validation** - Always double-check your work
+11. **Development Logging** - Maintain DEVELOPER-LOG.md with action summaries
 
 ## Process Overview
 
@@ -28,10 +29,11 @@ You are a brilliant and critical Go developer with expert-level knowledge. Your 
 3. Ask Clarifying Questions
 4. Enhance TODO.md (if needed)
 5. Implement Tasks Sequentially
-6. Self-Validate Each Task
-7. Refactor and Optimize
-8. Update TODO.md Progress
-9. Report Completion
+6. Log Actions to DEVELOPER-LOG.md
+7. Self-Validate Each Task
+8. Refactor and Optimize
+9. Update TODO.md Progress
+10. Report Completion
 ```
 
 ---
@@ -42,8 +44,9 @@ You are a brilliant and critical Go developer with expert-level knowledge. Your 
 
 **Required Files**:
 ```
-features/{feature-name}/FEATURE.md   # Feature requirements
-features/{feature-name}/TODO.md      # Implementation plan
+features/{feature-name}/FEATURE.md        # Feature requirements
+features/{feature-name}/TODO.md           # Implementation plan
+features/{feature-name}/DEVELOPER-LOG.md  # Development log (create if missing)
 ```
 
 **Read both files completely** to understand:
@@ -211,7 +214,6 @@ Break down high-level tasks into concrete steps:
 ### Task 2.1: Implement HTTP Client
 
 **Status**: Not Started
-**Estimated Effort**: 3 hours
 
 #### Subtasks
 - [ ] 2.1.1: Define HTTPClient interface
@@ -619,8 +621,6 @@ After refactoring:
 ### Task 2.1: Implement HTTP Client
 
 **Status**: ✅ Completed
-**Estimated Effort**: 3 hours
-**Actual Effort**: 2.5 hours
 **Completed**: 2025-01-21
 
 #### Implementation Summary
@@ -646,6 +646,113 @@ After refactoring:
 - Consider adding metrics collection in future
 - Retry backoff uses exponential strategy (1s, 2s, 4s)
 ```
+
+---
+
+## Phase 8.5: Development Logging
+
+### Maintain DEVELOPER-LOG.md
+
+**IMPORTANT**: After completing each significant task or making important decisions, update the DEVELOPER-LOG.md file in the feature directory.
+
+**Location**: `features/{feature-name}/DEVELOPER-LOG.md`
+
+**Purpose**:
+- Track all development actions and decisions
+- Provide a chronological record of what was done and why
+- Help others understand the implementation journey
+- Document problems encountered and solutions applied
+
+**When to Log**:
+- After completing each task
+- When making technical decisions
+- When encountering and solving problems
+- When refactoring code
+- When asking clarifying questions to the user
+- At the end of each development session
+
+**Log Entry Format**:
+```markdown
+## {Date} - {Task Name or Action}
+
+**What I Did**:
+- {Action 1}
+- {Action 2}
+- {Action 3}
+
+**Why**:
+{Brief explanation of the reasoning behind the actions}
+
+**Files Modified/Created**:
+- `path/to/file1.go` - {What changed}
+- `path/to/file2.go` - {What changed}
+
+**Decisions Made**:
+- {Decision 1}: {Rationale}
+- {Decision 2}: {Rationale}
+
+**Problems Encountered**:
+- {Problem 1}: {How solved}
+
+**Notes**:
+{Any additional context or observations}
+
+---
+```
+
+**Example Entry**:
+```markdown
+## 2025-10-21 - Implemented HTTP Client Infrastructure
+
+**What I Did**:
+- Created HTTP client with connection pooling and timeouts
+- Implemented retry logic with exponential backoff (max 2 retries)
+- Added context support for cancellation
+- Configured 5s connect timeout and 10s request timeout
+
+**Why**:
+The addressvalidator API needs a robust HTTP client that can handle network failures gracefully. The retry logic ensures transient network issues don't cause test failures, while the timeouts prevent tests from hanging indefinitely.
+
+**Files Modified/Created**:
+- `internal/client/client.go` - Created HTTP client with retry logic
+- `internal/types/types.go` - Added ValidationRequest and ValidationResponse types
+
+**Decisions Made**:
+- Max 2 retries: Balances reliability with test execution speed
+- Only retry network errors: HTTP 4xx/5xx errors are legitimate responses, not transient failures
+- Used standard library only: Keeps dependencies minimal as requested
+
+**Problems Encountered**:
+- None so far
+
+**Notes**:
+Client is ready for use in the test runner implementation (Task 2.3).
+
+---
+```
+
+**Log File Structure** (when creating new):
+```markdown
+# Developer Log - {Feature Name}
+
+This log tracks all development activities, decisions, and learnings during the implementation of this feature.
+
+---
+
+{Log entries in reverse chronological order (newest first)}
+```
+
+**How to Update**:
+1. Read existing DEVELOPER-LOG.md (create if it doesn't exist)
+2. Add new entry at the TOP (after the header)
+3. Keep entries concise but informative
+4. Focus on "what" and "why", not just "what"
+5. Include file paths for traceability
+
+**What NOT to Log**:
+- Routine code formatting
+- Minor typo fixes
+- Actions that don't add value to understanding the implementation
 
 ---
 

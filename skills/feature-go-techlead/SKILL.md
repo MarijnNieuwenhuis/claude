@@ -232,14 +232,12 @@ Each task should be:
 - **Measurable**: Clear completion criteria
 - **Achievable**: Doable in reasonable time
 - **Relevant**: Contributes to feature goal
-- **Time-bound**: Estimated effort
 
 **Task Format**:
 ```markdown
 ### Task N: {Task Title}
 
 **Phase**: {Which phase}
-**Estimated Effort**: {hours/days}
 **Dependencies**: {Previous tasks}
 **Go Packages**: {Which packages to use/create}
 
@@ -345,7 +343,6 @@ Before finalizing TODO.md, verify:
 #### Task Quality
 - [ ] Each task is specific and actionable
 - [ ] Acceptance criteria defined
-- [ ] Effort estimates reasonable
 - [ ] Dependencies clear
 - [ ] Files to modify listed
 
@@ -371,8 +368,7 @@ Ask yourself:
 1. **Re-read FEATURE.md**: Does TODO.md cover everything?
 2. **Review Tasks**: Are they clear and actionable?
 3. **Check References**: Are Go resources appropriately cited?
-4. **Validate Effort**: Are estimates reasonable?
-5. **Verify Completeness**: Is anything missing?
+4. **Verify Completeness**: Is anything missing?
 
 ---
 
@@ -461,7 +457,6 @@ Created detailed implementation plan for `features/{feature-name}/`.
 
 **Feature**: {Name}
 **Priority**: {Priority}
-**Estimated Effort**: {Total estimate}
 **Go Version**: {Required version}
 
 ## Files Created/Updated
@@ -473,19 +468,19 @@ Created detailed implementation plan for `features/{feature-name}/`.
 
 ### Phases
 
-1. **Foundation** ({N} tasks, {X} hours)
+1. **Foundation** ({N} tasks)
    - {Brief description}
 
-2. **Core Implementation** ({N} tasks, {X} hours)
+2. **Core Implementation** ({N} tasks)
    - {Brief description}
 
-3. **Validation & Quality** ({N} tasks, {X} hours)
+3. **Validation & Quality** ({N} tasks)
    - {Brief description}
 
-4. **Documentation & Deployment** ({N} tasks, {X} hours)
+4. **Documentation & Deployment** ({N} tasks)
    - {Brief description}
 
-**Total**: {N} tasks, approximately {X} hours/days
+**Total**: {N} tasks
 
 ## Go Best Practices Applied
 
@@ -510,7 +505,7 @@ Created detailed implementation plan for `features/{feature-name}/`.
 ## Next Steps
 
 1. Review TODO.md: `features/{feature-name}/TODO.md`
-2. Validate tasks and estimates
+2. Validate tasks
 3. Begin Phase 1: Foundation
 4. Follow Go best practices from `.claude/refs/go/`
 
@@ -574,7 +569,6 @@ Each task references `.claude/refs/go/` resources.
 ✅ All requirements covered
 ✅ Go best practices applied
 ✅ Tasks are specific
-✅ Timeline realistic (1 week)
 
 ---
 
@@ -643,7 +637,7 @@ Every TODO.md must include tasks for:
 1. **Too High-Level**: Tasks must be actionable, not vague
 2. **Ignoring Go Idioms**: Always reference `.claude/refs/go/` resources
 3. **Missing Error Handling**: Every task needs error strategy
-4. **Unrealistic Estimates**: Be honest about effort
+4. **No Testing Plan**: Testing tasks must be explicit
 5. **Missing Dependencies**: Identify all blockers
 6. **Not Self-Validating**: Always double-check your work
 
@@ -657,7 +651,6 @@ Every TODO.md must include tasks for:
 - **Be Specific**: Tasks must be actionable
 - **Double-Check**: Validate your own work
 - **Think Go**: Apply Go idioms and patterns
-- **Be Realistic**: Honest time estimates
 - **Be Thorough**: Cover all aspects
 
 Your goal is to create an implementation plan so clear and detailed that any Go developer can pick it up and start implementing immediately, following Go best practices every step of the way.
