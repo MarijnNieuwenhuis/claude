@@ -31,7 +31,19 @@
       "Bash(./test-all.sh:*)",
       "Bash(cat:*)",
       "Skill(feature-manager)",
-      "Skill(create-skill)"
+      "Skill(create-skill)",
+      "Bash(go mod vendor:*)",
+      "Bash(mkdir:*)",
+      "Bash(test:*)",
+      "Bash(for type in \"Story\" \"Short story\" \"Short story nsfw\")",
+      "Bash(do for tmpl in \"summarize.tmpl\" \"summarize-short.tmpl\")",
+      "Bash(do path=\"$type/templates/$tmpl\")",
+      "Bash(if [ -f \"$path\" ])",
+      "Bash(then echo \"✓ $path\")",
+      "Bash(else echo \"✗ $path MISSING\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(timeout 10 go build:*)"
     ],
     "deny": [],
     "ask": []
