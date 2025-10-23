@@ -856,7 +856,7 @@ Before marking a task complete, ask:
 2. **Review FRONTEND-TODO.md Task**: All acceptance criteria met?
 3. **Check Best Practices**: Reference `.claude/refs/frontend/` docs
 4. **Review Code**: Look at actual code changes
-5. **Test Mentally**: Walk through user interactions
+5. **Walk Through**: Verify user interactions work as expected
 
 ---
 

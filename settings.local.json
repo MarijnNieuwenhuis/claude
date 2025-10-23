@@ -43,7 +43,11 @@
       "Bash(else echo \"✗ $path MISSING\")",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(timeout 10 go build:*)"
+      "Bash(timeout 10 go build:*)",
+      "Bash(rm -rf var/cache var/log)",
+      "Bash(./start-both-servers.sh)",
+      "Bash(cp -r .claude/skills/project-go-new/bootstrap-go-project apps/addressvalidator-go)",
+      "Bash(rm -rf apps/addressvalidator-go/vendor)"
     ],
     "deny": [],
     "ask": []

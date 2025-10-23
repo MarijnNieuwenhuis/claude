@@ -1,0 +1,24 @@
+stages:
+    - test
+
+test:
+    stage: test
+    image: golang:1.23.0
+    before_script:
+        - echo -e "machine gitlab.com\n    login gitlab-ci-token\n    password $CI_JOB_TOKEN" >> ~/.netrc
+        - go env -w GOPRIVATE="${CI_SERVER_HOST}/*"
+    script:
+        - go test -v -coverprofile=coverage.out ./...
+    coverage: '/coverage: \d+.\d+% of statements/'
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "web"
+        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+        - if: $CI_COMMIT_TAG
+    extends:
+        - .retry
+
+.retry:
+    retry:
+        max: 2
+        when:
+            - runner_system_failure

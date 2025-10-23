@@ -87,7 +87,7 @@ Create the Go module and set up the project directory structure following Go bes
 - [ ] Go module initialized
 - [ ] Directory structure created
 - [ ] README.md exists with basic info
-- [ ] Makefile with common targets (build, test, run)
+- [ ] Makefile with common targets (build, run)
 
 **Files to Create**:
 - `go.mod`
@@ -224,81 +224,6 @@ func (e *ValidationError) Error() string {
 
 ---
 
-### Phase 3: Testing & Validation
-
-#### Task 3.1: Write Unit Tests
-
-**Dependencies**: Phase 2 tasks
-**Status**: Not Started
-
-**Description**:
-Write comprehensive unit tests for all packages using table-driven test approach.
-
-**Implementation Steps**:
-1. Create test files for each source file
-2. Write table-driven tests for each public function
-3. Test error cases and edge cases
-4. Achieve >80% code coverage
-
-**Acceptance Criteria**:
-- [ ] All public functions have tests
-- [ ] Table-driven tests used where appropriate
-- [ ] Error cases tested
-- [ ] Edge cases covered
-- [ ] Code coverage >80%
-- [ ] Tests pass with `go test ./...`
-
-**Files to Create**:
-- `pkg/{package}/{file}_test.go` (for each source file)
-
-**Go Best Practices**:
-- Reference: `.claude/go/testing-practices.md`
-- Use table-driven tests for multiple cases
-- Use `t.Helper()` in test helpers
-- Run tests in parallel with `t.Parallel()` where safe
-- Use subtests with `t.Run()`
-
-**Example**:
-```go
-func TestService_Process(t *testing.T) {
-    tests := []struct {
-        name    string
-        input   Data
-        want    Result
-        wantErr bool
-    }{
-        {
-            name:    "valid input",
-            input:   Data{Value: "test"},
-            want:    Result{Status: "ok"},
-            wantErr: false,
-        },
-        {
-            name:    "invalid input",
-            input:   Data{Value: ""},
-            want:    Result{},
-            wantErr: true,
-        },
-    }
-
-    for _, tt := range tests {
-        t.Run(tt.name, func(t *testing.T) {
-            s := NewService()
-            got, err := s.Process(context.Background(), tt.input)
-            if (err != nil) != tt.wantErr {
-                t.Errorf("Process() error = %v, wantErr %v", err, tt.wantErr)
-                return
-            }
-            if !reflect.DeepEqual(got, tt.want) {
-                t.Errorf("Process() = %v, want %v", got, tt.want)
-            }
-        })
-    }
-}
-```
-
----
-
 ### Phase 3: Documentation & Deployment
 
 #### Task 3.1: Add Package Documentation
@@ -385,14 +310,12 @@ Create comprehensive README with installation, usage, and examples.
 3. Add usage examples
 4. Document CLI flags/options
 5. Add development setup instructions
-6. Add testing instructions
 
 **Acceptance Criteria**:
 - [ ] README has clear overview
 - [ ] Installation instructions provided
 - [ ] Usage examples included
 - [ ] Development setup documented
-- [ ] Testing instructions provided
 - [ ] Contributing guidelines (if applicable)
 
 **Files to Modify**:
@@ -437,12 +360,6 @@ go install {module-path}/cmd/{app-name}@latest
 make build
 ```
 
-### Testing
-
-```bash
-make test
-```
-
 ## Contributing
 
 ...
@@ -465,13 +382,11 @@ Create Makefile with common development tasks.
 **Implementation Steps**:
 1. Create Makefile
 2. Add build target
-3. Add test target
-4. Add lint target
-5. Add clean target
+3. Add lint target
+4. Add clean target
 
 **Acceptance Criteria**:
 - [ ] `make build` compiles the project
-- [ ] `make test` runs all tests
 - [ ] `make lint` runs linters
 - [ ] `make clean` removes build artifacts
 - [ ] `make help` shows available targets
@@ -481,22 +396,13 @@ Create Makefile with common development tasks.
 
 **Example**:
 ```makefile
-.PHONY: build test lint clean help
+.PHONY: build lint clean help
 
 APP_NAME := {app-name}
 BUILD_DIR := ./build
 
 build: ## Build the application
 	go build -o $(BUILD_DIR)/$(APP_NAME) ./cmd/$(APP_NAME)
-
-test: ## Run tests
-	go test -v -race -cover ./...
-
-test-integration: ## Run integration tests
-	go test -v -tags=integration ./...
-
-bench: ## Run benchmarks
-	go test -bench=. -benchmem ./...
 
 lint: ## Run linters
 	golangci-lint run
@@ -546,13 +452,6 @@ help: ## Show this help
 - Always ensure goroutines can exit
 - Use context for cancellation
 
-### Testing
-- **Reference**: `.claude/go/testing-practices.md`
-- Write table-driven tests
-- Use `t.Helper()` in test utilities
-- Run tests in parallel when safe
-- Aim for >80% coverage on critical code
-
 ### Common Mistakes to Avoid
 - **Reference**: `.claude/go/common-mistakes.md`
 - Don't shadow variables with `:=`
@@ -580,12 +479,6 @@ Before marking implementation complete, verify:
 - [ ] All functions have godoc comments
 - [ ] Code follows Go idioms from `.claude/go/idiomatic-go.md`
 
-### Testing
-- [ ] Unit tests pass: `go test ./...`
-- [ ] Integration tests pass: `go test -tags=integration`
-- [ ] Code coverage >80% on critical paths
-- [ ] Benchmarks run successfully (if applicable)
-
 ### Error Handling
 - [ ] All errors checked and handled
 - [ ] Errors wrapped with context
@@ -593,7 +486,6 @@ Before marking implementation complete, verify:
 - [ ] Error messages are descriptive
 
 ### Concurrency
-- [ ] No data races: `go test -race ./...`
 - [ ] Goroutines can be cancelled
 - [ ] Channels closed properly
 - [ ] Mutexes not copied
@@ -606,7 +498,6 @@ Before marking implementation complete, verify:
 
 ### Performance
 - [ ] No obvious performance issues
-- [ ] Benchmarks meet targets (if applicable)
 - [ ] Memory allocations reasonable
 
 ### Security

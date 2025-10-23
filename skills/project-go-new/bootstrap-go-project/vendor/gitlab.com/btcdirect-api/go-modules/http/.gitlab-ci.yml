@@ -1,0 +1,4 @@
+include:
+    - project: "btcdirect-api/ci-cd"
+      ref: master
+      file: "/dummy.yml"

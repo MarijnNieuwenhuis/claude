@@ -752,14 +752,14 @@ Update them to:
 - Configured 5s connect timeout and 10s request timeout
 
 **Why**:
-The addressvalidator API needs a robust HTTP client that can handle network failures gracefully. The retry logic ensures transient network issues don't cause test failures, while the timeouts prevent tests from hanging indefinitely.
+The API client needs robust error handling for network failures. The retry logic ensures transient network issues don't cause failures, while the timeouts prevent requests from hanging indefinitely.
 
 **Files Modified/Created**:
 - `internal/client/client.go` - Created HTTP client with retry logic
-- `internal/types/types.go` - Added ValidationRequest and ValidationResponse types
+- `internal/types/types.go` - Added Request and Response types
 
 **Decisions Made**:
-- Max 2 retries: Balances reliability with test execution speed
+- Max 2 retries: Balances reliability with execution speed
 - Only retry network errors: HTTP 4xx/5xx errors are legitimate responses, not transient failures
 - Used standard library only: Keeps dependencies minimal as requested
 
@@ -767,7 +767,7 @@ The addressvalidator API needs a robust HTTP client that can handle network fail
 - None so far
 
 **Notes**:
-Client is ready for use in the test runner implementation (Task 2.3).
+Client is ready for use in the next implementation phase.
 
 ---
 ```

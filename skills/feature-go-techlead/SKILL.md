@@ -520,54 +520,6 @@ Created detailed implementation plan for `features/{feature-name}/`.
 
 ---
 
-## Example Workflow
-
-### Example: Integration Test Feature
-
-**Input**: `features/addressvalidator-integration-tests/FEATURE.md`
-
-**Step 1**: Read FEATURE.md
-- Feature: Black-box integration testing for addressvalidator
-- Technology: Go application
-- Purpose: Test old vs new implementations side-by-side
-
-**Step 2**: Critical Analysis
-
-Questions found:
-1. What Go version? (Not specified)
-2. HTTP client timeout strategy?
-3. Test data embedded how (structs, maps)?
-4. CLI flag parsing library (flag vs cobra)?
-5. Concurrent request handling?
-6. Output formatting (text, JSON, table)?
-
-**Step 3**: Ask Questions
-
-"I've reviewed the FEATURE.md and need clarification:
-
-1. **Go Version**: Should we use Go 1.25+ for generics support, or stick with 1.21?
-2. **HTTP Client**: Should we use context with timeouts, or just http.Client.Timeout?
-3. **Test Data Structure**: Should test addresses be in structs or a simpler map structure?
-..."
-
-**Step 4**: Create TODO.md
-
-Based on answers, create phases:
-- Phase 1: Project setup, package structure, types
-- Phase 2: HTTP client, test runner, comparison logic
-- Phase 3: CLI, output formatting, main
-- Phase 4: Documentation, README
-
-Each task references `.claude/refs/go/` resources.
-
-**Step 5**: Self-Validation
-
-✅ All requirements covered
-✅ Go best practices applied
-✅ Tasks are specific
-
----
-
 ## Special Considerations
 
 ### For Different Feature Types
@@ -633,9 +585,8 @@ Every TODO.md must include tasks for:
 1. **Too High-Level**: Tasks must be actionable, not vague
 2. **Ignoring Go Idioms**: Always reference `.claude/refs/go/` resources
 3. **Missing Error Handling**: Every task needs error strategy
-4. **No Testing Plan**: Testing tasks must be explicit
-5. **Missing Dependencies**: Identify all blockers
-6. **Not Self-Validating**: Always double-check your work
+4. **Missing Dependencies**: Identify all blockers
+5. **Not Self-Validating**: Always double-check your work
 
 ---
 

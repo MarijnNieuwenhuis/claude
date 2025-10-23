@@ -88,7 +88,6 @@ Define what success looks like:
 1. **Functional Requirements**: What must the feature do?
 2. **Non-Functional Requirements**: Performance, security, usability goals
 3. **Acceptance Criteria**: How do we know it's done?
-4. **Test Scenarios**: What scenarios need testing?
 
 ### Phase 5: Additional Context
 
@@ -238,15 +237,8 @@ What problem does this feature solve?
 
 - [ ] All functional requirements met
 - [ ] All acceptance criteria passed
-- [ ] Tests written and passing
 - [ ] Documentation complete
 - [ ] Code reviewed and approved
-
-### Testing Requirements
-
-1. Unit tests for {components}
-2. Integration tests for {flows}
-3. E2E tests for {scenarios}
 
 ## Additional Information
 
