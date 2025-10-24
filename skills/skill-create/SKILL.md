@@ -1,5 +1,5 @@
 ---
-name: create-skill
+name: skill-create
 description: Create new Claude skills or update existing ones following best practices. Use this when the user asks to create a skill, generate a SKILL.md file, update a skill, or set up a new skill structure.
 ---
 
