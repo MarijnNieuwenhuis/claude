@@ -238,19 +238,16 @@ Add comprehensive documentation to all packages, types, and functions.
 1. Add package comments to each package
 2. Add godoc comments to all exported types
 3. Add godoc comments to all exported functions
-4. Add example tests for public APIs
-5. Generate and review godoc locally
+4. Generate and review godoc locally
 
 **Acceptance Criteria**:
 - [ ] Every package has package comment
 - [ ] Every exported type has comment
 - [ ] Every exported function has comment
-- [ ] Examples provided for key APIs
 - [ ] Godoc renders correctly
 
 **Files to Modify**:
 - All `.go` files with exports
-- Add `example_test.go` files
 
 **Go Best Practices**:
 - Reference: `.claude/go/best-practices.md` - Documentation

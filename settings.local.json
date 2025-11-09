@@ -6,7 +6,13 @@
       "Skill(skill-create)",
       "Bash(go test -v ./internal/http/...)",
       "Bash(go test ./internal/http/server)",
-      "Bash(go test -v ./internal/http/server/... -run \"^Test(StartBasic|ServerInterface)$\")"
+      "Bash(go test -v ./internal/http/server/... -run \"^Test(StartBasic|ServerInterface)$\")",
+      "Skill(feature-manager)",
+      "Bash(mkdir:*)",
+      "Skill(feature-go-techlead)",
+      "Skill(feature-go-developer)",
+      "Bash(go build:*)",
+      "Bash(gofmt:*)"
     ],
     "deny": [],
     "ask": []

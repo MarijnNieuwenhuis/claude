@@ -93,12 +93,10 @@ Define what success looks like:
 
 Gather any other relevant information:
 
-1. **Priority**: High, Medium, Low
-2. **Target Release**: When should this be ready?
-3. **Stakeholders**: Who needs to be involved?
-4. **Documentation Needs**: What documentation is required?
-5. **Migration**: Any data migration needed?
-6. **Risks**: Known risks or concerns?
+1. **Stakeholders**: Who needs to be involved?
+2. **Documentation Needs**: What documentation is required?
+3. **Migration**: Any data migration needed?
+4. **Risks**: Known risks or concerns?
 
 ## Creating Feature Documentation
 
@@ -150,9 +148,7 @@ The FEATURE.md file follows this structure:
 ## Overview
 
 **Status**: Draft | In Planning | In Development | Completed
-**Priority**: High | Medium | Low
 **Category**: {Category}
-**Target Release**: {Version/Date}
 
 Brief description of the feature and its purpose.
 
@@ -280,7 +276,6 @@ After creating the feature documentation, provide:
 
 **Feature**: {Name}
 **Purpose**: {Brief description}
-**Priority**: {Priority}
 **Category**: {Category}
 
 ## Key Points
@@ -350,7 +345,6 @@ features/user-notifications/
 
 **Feature**: User Notifications
 **Purpose**: Enable system to send notifications to users via multiple channels
-**Priority**: High
 **Category**: New Functionality
 
 ## Key Points
